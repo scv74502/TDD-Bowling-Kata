@@ -1,0 +1,23 @@
+# Kotlin 빌드 결과물
+/build/
+/out/
+
+# IntelliJ IDEA
+*.iml
+.idea/
+*.ipr
+*.iws
+
+# macOS
+.DS_Store
+
+# 로그 파일
+*.log
+
+# 기타 임시 파일
+*.tmp
+*.swp
+*.bak
+
+# 테스트 결과물
+/test-output/
