@@ -6,7 +6,8 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import kotlin.test.Ignore
 
-// spare
+// one strike
+// perfect game
 class BowlingGameTest {
     lateinit var game: Game
 
@@ -39,14 +40,35 @@ class BowlingGameTest {
     }
 
     @Test
-    @Ignore
     fun `one spare`() {
-        game.roll(5)
-        game.roll(5) // spare
+        rollSpare()
         game.roll(3)
-
         rollMany(17, 0)
 
-        assertThat(game.score()).isEqualTo(5 + 5 + 3 + 3)
+        assertThat(game.score()).isEqualTo(10 + 3 + 3)
+    }
+
+    @Test
+    fun `one strike`() {
+        rollStrike()
+        game.roll(3)
+        game.roll(4)
+        rollMany(16, 0)
+        assertThat(game.score()).isEqualTo(10 + 3 + 4 + 3 + 4)
+    }
+
+    @Test
+    fun `perfect game`() {
+        rollMany(12, 10)
+        assertThat(game.score()).isEqualTo(300)
+    }
+
+    private fun rollSpare() {
+        game.roll(5)
+        game.roll(5)
+    }
+
+    private fun rollStrike() {
+        game.roll(10)
     }
 }
